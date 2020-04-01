@@ -1,0 +1,41 @@
+{% extends 'base_domain.html' %}
+{% load staticfiles %}
+
+{% block header %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="ui center aligned grid" style="margin-top: 60px">
+        <div class="ui six wide column">
+            <h2 class="ui teal image header">
+                <div class="content">
+                    添加域名
+                </div>
+            </h2>
+            <div class="ui segment">
+                <div class="ui content">
+                    <form action="{% url 'app:adddomain' %}" method="post" class="ui segment form">
+                        {% csrf_token %}
+                        <div class="image content">
+                            <div class="ui fluid input">
+                                {{ form.Form_url }}
+                                {{ error.Form_url }}
+                            </div>
+                            <br>
+                            {{ form.Form_type }}
+                            <br>
+                            {{ form.Form_dtype }} {{ error.Form_dtype }}
+                            <br>
+                            <button class="ui fluid large teal button">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

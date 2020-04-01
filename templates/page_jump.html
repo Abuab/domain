@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IP白名单限制</title>
+</head>
+<body>
+<p>
+<h1>IP白名单限制！还有
+    <span id="sp">5</span>
+    秒跳转到登录页面...
+</h1>
+</p>
+<script>
+    onload = function () {
+        setInterval(go, 1000)
+    };
+    var x = 4;
+
+    function go() {
+
+        if (x >= 0) {
+            document.getElementById("sp").innerText = x;
+        } else {
+            location.href = "/login/";
+        }
+        x--;
+    }
+</script>
+</body>
+</html>

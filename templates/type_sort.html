@@ -1,0 +1,38 @@
+{% extends 'base_domain.html' %}
+{% load staticfiles %}
+
+{% block header %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="ui segment">
+        <div class="ui secondary segment">
+            <div class="ui two column grid">
+                <div class="column">
+                    <i class="idea icon"></i>类型分类
+                </div>
+            </div>
+        </div>
+        <div class="ui teal segment">
+            <div class="ui fluid vertical menu">
+                <a href="{% url 'app:sort_master_domain' %}" class="item">
+                    主域名
+                    <div class="ui teal basic left pointing label">{{ certs_zym }}</div>
+                </a>
+                <a href="{% url 'app:sort_ldy' %}" class="item">
+                    落地页
+                    <div class="ui teal basic left pointing label">{{ certs_ldy }}</div>
+                </a>
+                <a href="{% url 'app:sort_qd' %}" class="item">
+                    渠道
+                    <div class="ui teal basic left pointing label">{{ certs_qudao }}</div>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ext_js %}
+
+{% endblock %}

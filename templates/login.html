@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block ext_css %}
+    {{ block.super }}
+{% endblock %}
+{% block header %}
+    <header></header>
+{% endblock %}
+
+{% block ext_js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <body style="background-color: rgb(230,230,230)">
+    <div class="ui center aligned grid" style="margin-top: 200px">
+        <div class="ui six wide column">
+            <h1 class="ui teal image header">
+                <img src="/static/img/login.jpg" class="image">
+                <div class="content">
+                    域名管理中心
+                </div>
+            </h1>
+            <div class="ui segment">
+                <div class="ui content">
+                    <form class="ui form" method="post" action="{% url 'app:login' %}" onsubmit="return parse_data()">
+                        {% csrf_token %}
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="username" class="form-control" id="username_input"
+                                       placeholder="用户名"><br>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" name="password" class="form-control" id="password_input"
+                                       placeholder="密码"><br>
+                            </div>
+                        </div>
+                        {#                        <div class="field">#}
+                        {#                            <div class="ui left icon input">#}
+                        {#                                <i class="hand point right icon"></i>#}
+                        {#                                <input type="password" name="password" class="form-control" id="password_input"#}
+                        {#                                       placeholder="验证码"><br>#}
+                        {#                            </div>#}
+                        {#                        </div>#}
+                        <li style="color: red">{{ error }}<br></li>
+                        <button class="ui fluid large teal button" onclick="login()">登录</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}
+
+{% block footer %}
+    {{ block.super }}
+{% endblock %}

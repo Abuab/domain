@@ -1,0 +1,139 @@
+{% extends 'base_domain.html' %}
+{% load staticfiles %}
+{% block header %}
+    {{ block.super }}
+{% endblock %}
+{% block content %}
+    <table class="ui celled table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>域名</th>
+            <th>平台</th>
+            <th>域名类型</th>
+            <th>证书开始时间</th>
+            <th>证书到期时间</th>
+            <th>证书剩余时间</th>
+            <th>域名DNS记录</th>
+            <th>域名A记录</th>
+            <th>域名到期时间</th>
+            <th>最后更新时间</th>
+            <th>是否备案</th>
+            <th>是否被微信拦截</th>
+            <th>是否被墙</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        {% for ldy in certldy %}
+            <tbody>
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ ldy.name }}</td>
+                <td style="color: red">{{ ldy.type }}</td>
+                <th>{{ ldy.dtype }}</th>
+                <td>{{ ldy.notbefore }}</td>
+                <td>{{ ldy.notafter }}</td>
+                {% if ldy.remain_days <= 7 %}
+                    <td style="color: red">即将到期{{ ldy.remain_days }}天</td>
+                {% else %}
+                    <td>{{ ldy.remain_days }}天</td>
+                {% endif %}
+                <td>{{ ldy.dnsinfo }}</td>
+                <td>{{ ldy.a_notes }}</td>
+                {% if ldy.dreamin_days <= 7 %}
+                    <td style="color: red">即将到期{{ ldy.dreamin_days }}天</td>
+                {% else %}
+                    <td>{{ ldy.dreamin_days }}天</td>
+                {% endif %}
+                <td>{{ ldy.last_time }}</td>
+                {% if ldy.beian == True %}
+                    <td style="color: navy">已备案</td>
+                {% else %}
+                    <td style="color: #3c5876">无备案</td>
+                {% endif %}
+                {% if ldy.wxwaf == True %}
+                    <td style="color: red">微信拦截</td>
+                {% else %}
+                    <td>正常</td>
+                {% endif %}
+                {% if ldy.waf == True %}
+                    <td style="color: red">域名被墙</td>
+                {% else %}
+                    <td>正常</td>
+                {% endif %}
+                <td>
+                    <a name="update" href="javascript:" onclick="up_data(this, {{ cert.id }})"
+                       class="ui mini teal button">更新</a>
+                    <div class="right item">
+                        <a name="delete" href="javascript:" onclick="del_data(this, {{ type.id }})"
+                           class="ui mini red button">删除</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+{% block ext_js %}
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/layer/2.1/layer.js"></script>
+    <script type="text/javascript">
+        function del_data(the, cert_id) {
+            var cert_name = $(the).parents("tr").children("td").eq(1).text();
+            layer.open({
+                type: 1,
+                skin: "layui-layer-rim",
+                area: ["400px", "200px"],
+                title: "删除域名",
+                content: '<div class="text-center" style="margin-top:20px"><p>是否确定删除' + cert_name + '</p></div>',
+                btn: ['确定', '取消'],
+                yes: function () {
+                    $.ajax({
+                        url: '{% url "app:delete" %}',
+                        type: "POST",
+                        data: {"cert_id": cert_id},
+                        success: function (e) {
+                            if (e == "1") {
+                                parent.location.reload();
+                                layer.msg("删除成功");
+                            } else {
+                                layer.msg("删除失败");
+                            }
+
+                        },
+                    })
+                },
+            });
+        }
+
+        function up_data(the, cert_id) {
+            var cert_name = $(the).parents("tr").children("td").eq(1).text();
+            layer.open({
+                type: 1,
+                skin: "layui-layer-rim",
+                area: ["400px", "200px"],
+                title: "更新域名",
+                content: '<div class="text-center" style="margin-top:20px"><p>是否确定更新' + cert_name + '</p></div>',
+                btn: ['确定', '取消'],
+                yes: function () {
+
+                    $.ajax({
+                        url: '{% url "app:update" %}',
+                        type: "POST",
+                        data: {"cert_id": cert_id},
+                        success: function (e) {
+                            if (e == "1") {
+                                parent.location.reload();
+                                layer.msg("更新成功");
+                            } else {
+                                layer.msg("更新失败");
+                            }
+
+                        },
+                    })
+                },
+            });
+        }
+    </script>
+{% endblock %}

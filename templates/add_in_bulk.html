@@ -1,0 +1,41 @@
+{% extends 'base_domain.html' %}
+{% load staticfiles %}
+{% block header %}
+    {{ block.super }}
+{% endblock %}
+{% block content %}
+    <div class="ui center aligned grid" style="margin-top: 60px">
+        <div class="ui six wide column">
+            <div class="ui brown inverted segment"></div>
+            <div class="ui form">
+                <div class="ui message">
+                    <div class="header">批量添加域名</div>
+                    <ul class="list">
+                        <li>请遵循以下格式，一行一个</li>
+                        <li>baidu.com|唐朝国际|主域名</li>
+                    </ul>
+                </div>
+                <form action="{% url 'app:add_in_bulk' %}" method="post" class="ui segment form">
+                    {% csrf_token %}
+                    <div class="field">
+                        <textarea name="domain_data" placeholder="请输入域名，每行一个"></textarea>
+                        {% if d_count >= 7 %}
+                            <button class="ui fluid large teal button">提交</button>
+                        {% else %}
+                            <div class="ui form error">
+                                <div class="ui error message">
+                                    <div class="header">域名格式输入错误</div>
+                                </div>
+                                <button class="ui fluid large teal button">提交</button>
+                            </div>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

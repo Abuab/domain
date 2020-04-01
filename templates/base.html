@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'img/icon.png' %}">
+    <title>{{ title }}</title>
+    {% block ext_css %}
+        <link rel="stylesheet" href="{% static 'css/semantic.css' %}">
+    {% endblock %}
+</head>
+<body>
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+{% block ext_js %}
+    <script type="text/javascript" src="{% static 'js/semantic.js' %}"></script>
+{% endblock %}
+</body>
+</html>

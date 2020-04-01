@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header %}
+    {{ block.super }}
+    <nav class="ui inverted attached segment my-padded-tb-mini">
+        <div class="ui container">
+            <div class="ui inverted secondary stackable menu">
+                <h2 class="ui teal header item">
+                    <img class="logo" src="/static/img/logo.jpg">
+                    域名管理中心
+                </h2>
+                <a href="{% url 'app:domain_info' %}" class="item"><i class="home icon"></i>首页</a>
+                <a href="{% url 'app:place_sort' %}" class="item"><i class="idea icon"></i>平台分类</a>
+                <a href="{% url 'app:type_sort' %}" class="item"><i class="idea icon"></i>类型分类</a>
+                <a href="{% url 'app:label' %}" class="item"><i class="tags icon"></i>标签</a>
+                <div class="right item">
+                    <div class="ui icon inverted transparent input">
+                        <form class="ui form" style="display:flex;align-item:center;" method="post"
+                              action="{% url 'app:search' %}">
+                            {% csrf_token %}
+                            <input type="text" name="sear" placeholder="搜索">
+                            <button class="button" type="submit"><i class="search link icon"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="right my-item my-mobile-hide menu my-margin-top-small">
+                    <div class="ui dropdown inline item">
+                        <div class="text">
+                            <img class="ui avatar image" src="/static/img/abu.jpg">阿布
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="right item">
+                            <a href="{% url 'app:logout' %}" class="item">注销</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="ui inverted attached pointing menu">
+        <div class="ui container">
+            <div class="right menu">
+                <div class="ui simple dropdown item">
+                    添加域名
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item">
+                            <a href="{% url 'app:adddomain' %}" style="color: #171616" class="item" rel="nofollow"><i class="add icon"></i>添加单个域名</a>
+                        </div>
+                        <div class="item">
+                            <a href="{% url 'app:add_in_bulk' %}" style="color: #171616" class="item"><i class="add icon"></i>添加多个域名</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="{% url 'app:domain_info' %}" class="active teal item">列表</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <div style="text-align: right;padding-right: 50px;">
+        <tr>
+            <th colspan="6">
+                {% if page_object.has_previous %}
+                    <div class="ui teal pagination menu">
+                        <a href="#" class="item">上一页</a>
+                    </div>
+                {% else %}
+                    <div class="ui teal pagination menu">
+                        <a class="item">上一页</a>
+                    </div>
+                {% endif %}
+            </th>
+        </tr>
+        <div class="ui pagination menu">
+            {% for page_index in page_range %}
+                {% ifequal page_index page_object.number %}
+                    <div class="active item"><a
+                            href="{% url 'app:domain_info' %}?page={{ page_index }}">{{ page_index }}</a></div>
+                {% else %}
+                    <div class="item"><a
+                            href="{% url 'app:domain_info' %}?page={{ page_index }}">{{ page_index }}</a>
+                    </div>
+                {% endifequal %}
+            {% endfor %}
+        </div>
+        <!-- 翻页按钮 -->
+        <tr>
+            <th colspan="6">
+                {% if page_object.has_next %}
+                    <div class="ui teal pagination menu">
+                        <a href="#" class="item">下一页</a>
+                    </div>
+                {% else %}
+                    <div class="ui teal pagination menu">
+                        <a class="item">下一页</a>
+                    </div>
+                {% endif %}
+            </th>
+        </tr>
+    </div>
+{% endblock %}

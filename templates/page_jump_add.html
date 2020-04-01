@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>错误信息</title>
+</head>
+<body>
+<p>
+<h1>{{ error }}
+    <span id="sp">5</span>
+    秒跳转到添加域名界面...
+</h1>
+</p>
+<script>
+    onload = function () {
+        setInterval(go, 1000)
+    };
+    var x = 4;
+
+    function go() {
+
+        if (x >= 0) {
+            document.getElementById("sp").innerText = x;
+        } else {
+            location.href = "/adddomain/";
+        }
+        x--;
+    }
+</script>
+</body>
+</html>

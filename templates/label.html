@@ -1,0 +1,59 @@
+{% extends 'base_domain.html' %}
+{% load staticfiles %}
+{% block header %}
+    {{ block.super }}
+{% endblock %}
+{% block content %}
+    <div class="ui segment my-margin-top-large">
+        <div class="ui secondary segment">
+            <div class="ui two column grid">
+                <div class="column">
+                    <i class="tags icon"></i>标签
+                </div>
+            </div>
+        </div>
+        <div class="ui teal segment">
+            <a href="{% url 'app:label_dreamin' %}" class="ui teal basic left pointing label my-margin-tb-tiny">
+                将到期域名
+                <div class="detail">{{ ldreamin }}</div>
+            </a>
+            <a href="{% url 'app:label_remain' %}" class="ui teal basic left pointing label my-margin-tb-tiny">
+                证书将到期
+                <div class="detail">{{ lremain }}</div>
+            </a>
+            <a href="{% url 'app:label_wxwaf' %}" class="ui teal basic left pointing label my-margin-tb-tiny">
+                被微信拦截
+                <div class="detail">{{ lwxwaf }}</div>
+            </a>
+            <a href="{% url 'app:label_waf' %}" class="ui teal basic left pointing label my-margin-tb-tiny">
+                被墙
+                <div class="detail">{{ lwaf }}</div>
+            </a>
+            <a href="{% url 'app:label_beian' %}" class="ui teal basic left pointing label my-margin-tb-tiny">
+                掉备案
+                <div class="detail">{{ lbeian }}</div>
+            </a>
+        </div>
+    </div>
+    <div class="ui segment my-margin-top-large">
+        <div class="ui secondary segment">
+            <i class="bookmark icon"></i>改编不是乱编，戏说不是胡说
+        </div>
+        <div class="ui segment">
+            <a href="http://pronhub.com" class="my-black my-text-thin">阿蒙与三个女人不得不说的故事</a>
+        </div>
+        <div class="ui segment">
+            <a href="#" class="my-black my-text-thin">阿羽与三个女人不得不说的故事</a>
+        </div>
+        <div class="ui segment">
+            <a href="#" class="my-black my-text-thin">老肥与三个女人不得不说的故事</a>
+        </div>
+        <div class="ui segment">
+            <a href="#" class="my-black my-text-thin">阿布与八个女人不得不说的故事</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ext_js %}
+
+{% endblock %}
