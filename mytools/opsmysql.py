@@ -77,8 +77,8 @@ class MysqlOps(object):
 
 
 def main():
-    chat_id = "-250182564"
-    bot = telegram.Bot(token='1006108054:AAFo47eytOVgEDt9BHQ-Y3gvwEpJGoUQMGs')
+    chat_id = "-xxxxx"
+    bot = telegram.Bot(token='xxxxx:xxxx-xxxx')
     news = MysqlOps()
     new = news.get_data_remain_days()
     if new:
