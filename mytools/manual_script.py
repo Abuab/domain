@@ -185,18 +185,18 @@ class MysqlOps(object):
 
 def main(file):
     type_list = [
-        '291',
-        '646',
-        '兔牙1',
-        '兔牙2',
-        '唐朝',
-        'JJ',
-        '唐朝国际',
-        '唐朝盛世',
-        '元朝国际',
-        '宋朝国际',
-        '秦朝国际',
-        '明朝国际'
+        'xx',
+        'xx',
+        'xx',
+        'xx',
+        'xx',
+        'xx',
+        'xx',
+        'xx',
+        'xx',
+        'xx',
+        'xx',
+        'xx'
     ]
     dtype_list = [
         '主域名',
