@@ -70,19 +70,19 @@ def add_domain(request):
     if request.method == "POST":
         form = AddUrlForm(request.POST, request.FILES)
         type_list = (
-            (0, '291'),
-            (1, '646'),
-            (2, '兔牙1'),
-            (3, '兔牙2'),
-            (4, '唐朝'),
-            (5, 'JJ'),
-            (6, '唐朝国际'),
-            (7, '唐朝盛世'),
-            (8, '元朝国际'),
-            (9, '宋朝国际'),
-            (10, '秦朝国际'),
-            (11, '明朝国际'),
-            (12, '唐朝646'),
+            (0, 'xx'),
+            (1, 'xx'),
+            (2, 'xx'),
+            (3, 'xx'),
+            (4, 'xx'),
+            (5, 'xx'),
+            (6, 'xx'),
+            (7, 'xx'),
+            (8, 'xx'),
+            (9, 'xx'),
+            (10, 'xx'),
+            (11, 'xx'),
+            (12, 'xx'),
         )
         dtype_list = (
             (0, "主域名"),
@@ -210,19 +210,19 @@ def delete_date(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def place_sort(request):
     if request.method == "GET":
-        certs291 = Certs.objects.all().filter(type='291')
-        certs646 = Certs.objects.all().filter(type='646')
-        certsty1 = Certs.objects.all().filter(type='兔牙1')
-        certsty2 = Certs.objects.all().filter(type='兔牙2')
-        certstc = Certs.objects.all().filter(type='唐朝')
+        certs291 = Certs.objects.all().filter(type='xx')
+        certs646 = Certs.objects.all().filter(type='xx')
+        certsty1 = Certs.objects.all().filter(type='xx')
+        certsty2 = Certs.objects.all().filter(type='xx')
+        certstc = Certs.objects.all().filter(type='xx')
         certsjj = Certs.objects.all().filter(type='JJ')
-        certstcgj = Certs.objects.all().filter(type='唐朝国际')
-        certstcss = Certs.objects.all().filter(type='唐朝盛世')
-        certsycgj = Certs.objects.all().filter(type='元朝国际')
-        certsscgj = Certs.objects.all().filter(type='宋朝国际')
-        certsqcgj = Certs.objects.all().filter(type='秦朝国际')
-        certsmcgj = Certs.objects.all().filter(type='明朝国际')
-        certstc6 = Certs.objects.all().filter(type='唐朝646')
+        certstcgj = Certs.objects.all().filter(type='xx')
+        certstcss = Certs.objects.all().filter(type='xx')
+        certsycgj = Certs.objects.all().filter(type='xx')
+        certsscgj = Certs.objects.all().filter(type='xx')
+        certsqcgj = Certs.objects.all().filter(type='xx')
+        certsmcgj = Certs.objects.all().filter(type='xx')
+        certstc6 = Certs.objects.all().filter(type='xx')
         data = {
             'title': "平台分类",
             'certs291': certs291.count(),
@@ -277,7 +277,7 @@ def label_data(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_291(request):
     if request.method == "GET":
-        cert291 = Certs.objects.all().filter(type='291')
+        cert291 = Certs.objects.all().filter(type='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -295,7 +295,7 @@ def sort_291(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_646(request):
     if request.method == "GET":
-        cert646 = Certs.objects.all().filter(type='646')
+        cert646 = Certs.objects.all().filter(type='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -313,7 +313,7 @@ def sort_646(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_jj(request):
     if request.method == "GET":
-        certjj = Certs.objects.all().filter(type='JJ')
+        certjj = Certs.objects.all().filter(type='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -331,7 +331,7 @@ def sort_jj(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_mcgj(request):
     if request.method == "GET":
-        certmcgj = Certs.objects.all().filter(type='明朝国际')
+        certmcgj = Certs.objects.all().filter(type='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -349,7 +349,7 @@ def sort_mcgj(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_qcgj(request):
     if request.method == "GET":
-        certqcgj = Certs.objects.all().filter(type='秦朝国际')
+        certqcgj = Certs.objects.all().filter(type='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -367,7 +367,7 @@ def sort_qcgj(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_scgj(request):
     if request.method == "GET":
-        certscgj = Certs.objects.all().filter(type='宋朝国际')
+        certscgj = Certs.objects.all().filter(type='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -385,7 +385,7 @@ def sort_scgj(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_tc6(request):
     if request.method == "GET":
-        certtc6 = Certs.objects.all().filter(type='唐朝646')
+        certtc6 = Certs.objects.all().filter(type='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -403,7 +403,7 @@ def sort_tc6(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_tcgj(request):
     if request.method == "GET":
-        certtcgj = Certs.objects.all().filter(type='唐朝国际')
+        certtcgj = Certs.objects.all().filter(type='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -421,7 +421,7 @@ def sort_tcgj(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_tc(request):
     if request.method == "GET":
-        certtc = Certs.objects.all().filter(type='唐朝')
+        certtc = Certs.objects.all().filter(type='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -439,7 +439,7 @@ def sort_tc(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_tcss(request):
     if request.method == "GET":
-        certtcss = Certs.objects.all().filter(type='唐朝盛世')
+        certtcss = Certs.objects.all().filter(type='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -457,7 +457,7 @@ def sort_tcss(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_ty1(request):
     if request.method == "GET":
-        certty1 = Certs.objects.all().filter(type='兔牙1')
+        certty1 = Certs.objects.all().filter(type='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -475,7 +475,7 @@ def sort_ty1(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_ty2(request):
     if request.method == "GET":
-        certty2 = Certs.objects.all().filter(type='兔牙2')
+        certty2 = Certs.objects.all().filter(type='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -493,7 +493,7 @@ def sort_ty2(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_ycgj(request):
     if request.method == "GET":
-        certycgj = Certs.objects.all().filter(type='元朝国际')
+        certycgj = Certs.objects.all().filter(type='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -511,7 +511,7 @@ def sort_ycgj(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_master_domain(request):
     if request.method == "GET":
-        certmd = Certs.objects.all().filter(dtype='主域名')
+        certmd = Certs.objects.all().filter(dtype='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -529,7 +529,7 @@ def sort_master_domain(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_ldy(request):
     if request.method == "GET":
-        certldy = Certs.objects.all().filter(dtype='落地页')
+        certldy = Certs.objects.all().filter(dtype='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -547,7 +547,7 @@ def sort_ldy(request):
 @login_required(login_url='app:login', redirect_field_name='')
 def sort_qd(request):
     if request.method == "GET":
-        certqd = Certs.objects.all().filter(dtype='渠道')
+        certqd = Certs.objects.all().filter(dtype='xx')
         page = int(request.GET.get('page', 1))
         per_page = int(request.GET.get('per_page', 10))
         certs = Certs.objects.all().order_by("id")
@@ -694,18 +694,18 @@ def add_in_bulk(request):
         return render(request, 'add_in_bulk.html', context=data)
     if request.method == "POST":
         type_list = [
-            '291',
-            '646',
-            '兔牙1',
-            '兔牙2',
-            '唐朝',
-            'JJ',
-            '唐朝国际',
-            '唐朝盛世',
-            '元朝国际',
-            '宋朝国际',
-            '秦朝国际',
-            '明朝国际'
+            'xx',
+            'xx',
+            'xx',
+            'xx',
+            'xx',
+            'xx',
+            'xx',
+            'xx',
+            'xx',
+            'xx',
+            'xx',
+            'xx'
         ]
         dtype_list = [
             '主域名',
