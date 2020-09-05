@@ -14,7 +14,7 @@
 # 在服务器上进行批量添加域名的方法：
     # 手动输入域名至 /data/domain/input_data.txt 如果文件不存在则手动创建 
     请遵循以下格式，一行一个，以 | 来进行分隔
-    baidu.com|唐朝国际|主域名
+    baidu.com|百度|主域名
 
     输入完之后执行脚本：
         /data/domain/mytools/manual_script.py
