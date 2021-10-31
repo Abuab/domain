@@ -2,7 +2,7 @@
 
 
 
-# 计划任务crontab    
+#计划任务crontab    
     # 域名告警脚本
     10 */5 * * * /data/pyenv/bin/python /data/domain/mytools/opsmysql.py
 
